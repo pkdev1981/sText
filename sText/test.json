@@ -1,0 +1,61 @@
+{
+    "struct" : [
+                {
+                "type" : "plain",
+                "title" : "Αριθμός",
+                "relativePath" : "$/test/arithmos.txt"
+                },
+                {
+                "type" : "plain",
+                "title" : "Τίτλος",
+                "relativePath" : "$/test/titlos.txt"
+                },
+                {
+                "type" : "import",
+                "title" : "Imported",
+                "relativePath" : "test2.json"
+                },
+                {
+                "type" : "pickOne",
+                "title" : "Εντός / Εκτός γραφείου",
+                "value" : 0,
+                "valueKeyPath" : "entosektos",
+                "items" : [{
+                           "type" : "plain",
+                           "title" : "Εντός γραφείου",
+                           "relativePath" : "$/test/entos.txt"
+                           },
+                           {
+                           "type" : "plain",
+                           "title" : "Εκτός γραφείου",
+                           "relativePath" : "$/test/ektos.txt"
+                           }
+                           ]
+                },
+                {
+                "type" : "numbered",
+                "numberPrefix" : "**",
+                "numberSuffix" : ")** ",
+                "title" : "pickAny",
+                "value" : ["ar1", 1, 0],
+                "items" : [{
+                           "type" : "plain",
+                           "nodeid" : "ar1",
+                           "title" : "Αριθμός1",
+                           "relativePath" : "$/test/arithmos.txt"
+                           },
+                           {
+                           "type" : "optional",
+                           "title" : "Αριθμός2",
+                           "value" : true,
+                           "relativePath" : "$/test/arithmos.txt"
+                           },
+                           ]
+                }
+
+    ],
+    "values" : {
+        "test" : true
+    }
+}
+

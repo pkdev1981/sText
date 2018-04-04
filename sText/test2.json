@@ -1,0 +1,17 @@
+{
+    "struct" : [
+                {
+                "type" : "plain",
+                "title" : "Α1",
+                "relativePath" : "$/test/arithmos.txt"
+                },
+                {
+                "type" : "plain",
+                "title" : "Α2",
+                "relativePath" : "$/test/arithmos.txt"
+                },
+    ],
+    "values" : {
+        "test" : true
+    }
+}
