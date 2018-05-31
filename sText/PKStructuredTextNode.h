@@ -39,6 +39,10 @@
 
 - (void)depthFirst:(void (^)(PKStructuredTextNode *))block;
 
+- (NSString *)templateString;
+- (NSString *)lastProcessedString;
+- (NSString *)userEditedString;
+
 @end
 
 @protocol PKStructuredTextNodeDelegate <NSObject>

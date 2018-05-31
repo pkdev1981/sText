@@ -11,6 +11,13 @@
 @implementation PKStructuredTextPickOneNode
 
 - (NSString *)outputWithDelegate:(id <PKStructuredTextNodeDelegate>)delegate andValues:(NSDictionary *)values {
+    PKStructuredTextNode *n = [self pickedNodeWithValues:values];
+    if (n == nil)
+        return nil;
+    return [n outputWithDelegate:delegate andValues:values];
+}
+
+- (PKStructuredTextNode *)pickedNodeWithValues:(NSDictionary *)values {
     NSUInteger val = 0;
     if (values) {
         NSString *vKeyPath = [self nodeValueKeyPath];
@@ -24,8 +31,7 @@
     }
     if (val >= self.items.count)
         return nil;
-    PKStructuredTextNode *n = self.items[val];
-    return [n outputWithDelegate:delegate andValues:values];
+    return self.items[val];
 }
 
 @end

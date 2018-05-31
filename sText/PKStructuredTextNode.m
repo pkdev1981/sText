@@ -84,9 +84,9 @@
 }
 
 - (void)depthFirst:(void (^)(PKStructuredTextNode *))block {
+    block(self);
     for (PKStructuredTextNode *node in self.children)
         [node depthFirst:block];
-    return block(self);
 }
 
 - (NSString *)outputWithDelegate:(id <PKStructuredTextNodeDelegate>)delegate andValues:(NSDictionary *)values {

@@ -11,15 +11,12 @@
 #import "PKStructuredTextOptionalNode.h"
 #import "PKStructuredTextPickOneNode.h"
 #import "PKStructuredTextPickAnyNode.h"
+#import "PKStructuredTextImportNode.h"
 //#import "PKStructuredTextNumberedNode.h"
-//#import "PKStructuredTextImportNode.h"
-
-#import "PKStructuredTextProc.h"
 
 @interface PKStructuredTextViewController () <NSOutlineViewDelegate>
 
 @property (strong) NSURL *fileURL;
-@property (strong) PKStructuredTextProc *proc;
 
 @end
 
@@ -85,14 +82,22 @@
 }
 
 - (IBAction)build:(id)sender {
-    NSLog(@"%@", [self currentValues]);
-    NSString *ret = [self.proc processRootNodes:self.rootNodes];
-    NSLog(@"build: [%@]", ret);
+//    NSLog(@"%@", [self currentValues]);
+//    NSString *ret = [self.proc processRootNodes:self.rootNodes];
+//    NSLog(@"build: [%@]", ret);
+    for (PKStructuredTextNode *rnode in self.rootNodes) {
+        [rnode depthFirst:^(PKStructuredTextNode *node) {
+            if ([node isKindOfClass:[PKStructuredTextImportNode class]])
+                return;
+            if ([node isKindOfClass:[PKStructuredTextPickAnyNode class]])
+                return;
+            if ([node isKindOfClass:[PKStructuredTextPickOneNode class]]) {
+                node = [((PKStructuredTextPickOneNode *)node) pickedNodeWithValues:nil];
+            }
+            NSString *s = [self.proc outputOfNode:node withTemplateAtPath:node.relativePath];
+            NSLog(@"[%@]:%@", node.title, s);
+        }];
+    }
 }
-
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do view setup here.
-//}
 
 @end

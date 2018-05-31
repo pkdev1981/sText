@@ -10,4 +10,6 @@
 
 @interface PKStructuredTextPickOneNode : PKStructuredTextNode
 
+- (PKStructuredTextNode *)pickedNodeWithValues:(NSDictionary *)values;
+
 @end

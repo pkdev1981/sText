@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PKStructuredTextProc.h"
 
 @interface PKStructuredTextViewController : NSViewController
 
 - (instancetype)initWithURL:(NSURL *)url;
 @property (strong) NSMutableArray *rootNodes;
+
+@property (strong) PKStructuredTextProc *proc;
 
 @end
